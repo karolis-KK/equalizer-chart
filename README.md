@@ -7,6 +7,8 @@ A lightweight React bar chart styled like a music equalizer.
 - ~4 kB gzipped
 - Respects `prefers-reduced-motion`
 
+<img width="966" height="600" alt="image" src="https://github.com/user-attachments/assets/f48de8d3-ff05-4fff-b8a4-753f9aab3054" />
+
 ---
 
 ## About

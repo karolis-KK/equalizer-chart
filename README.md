@@ -1,13 +1,13 @@
 # equalizer-chart
 
-A lightweight React bar chart styled like a music equalizer — gradient pillars
-with thin segment lines, and a short on-load animation that makes the bars
-pulse once before settling on your real data.
+A lightweight React bar chart styled like a music equalizer.
 
 - No runtime dependencies (React is a peer dependency)
 - ESM + CommonJS + TypeScript types
 - ~4 kB gzipped
 - Respects `prefers-reduced-motion`
+
+<img width="966" height="600" alt="image" src="https://github.com/user-attachments/assets/f48de8d3-ff05-4fff-b8a4-753f9aab3054" />
 
 ---
 
@@ -19,7 +19,7 @@ equalizer look. When the page loads, the bars play a single ~1 second pulse
 (`wave` or `random`) and then stop on their true values, so the chart is
 readable immediately without distracting motion.
 
-Everything is inline SVG — no global CSS, no layout surprises.
+Everything is inline SVG.
 
 ---
 
@@ -52,7 +52,7 @@ export function App() {
 }
 ```
 
-That's it — you get a gradient equalizer chart with the default green → pink
+That's it. You get a gradient equalizer chart with the default green to pink
 palette and a one-time on-load animation.
 
 ### Next.js

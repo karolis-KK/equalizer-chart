@@ -1,0 +1,113 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  background: #0b0b0f;
+  color: #e5e7eb;
+}
+
+.demo {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.demo h1 {
+  font-size: 2rem;
+  margin: 0 0 4px;
+}
+
+.demo .subtitle {
+  color: #9ca3af;
+  margin: 0 0 36px;
+}
+
+.demo section {
+  margin-bottom: 48px;
+}
+
+.demo h2 {
+  font-size: 1.25rem;
+  margin: 0 0 16px;
+  color: #f9fafb;
+}
+
+.demo .description {
+  color: #9ca3af;
+  margin: 0 0 20px;
+  max-width: 640px;
+  line-height: 1.5;
+}
+
+.demo .chart-card {
+  background: #16161d;
+  border: 1px solid #26262e;
+  border-radius: 16px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.demo .controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-top: 20px;
+}
+
+.demo .controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.demo .controls input[type='number'] {
+  width: 90px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #33333d;
+  background: #1e1e27;
+  color: #e5e7eb;
+}
+
+.demo .controls select {
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #33333d;
+  background: #1e1e27;
+  color: #e5e7eb;
+}
+
+.demo .controls input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+}
+
+.demo .controls button {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #33333d;
+  background: #6366f1;
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.demo .controls button:hover {
+  background: #4f46e5;
+}
+
+.demo .hint {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 12px;
+}

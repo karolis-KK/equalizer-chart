@@ -103,7 +103,7 @@ Users with `prefers-reduced-motion: reduce` see the static chart immediately.
 
 Three examples matching the library's reference designs, in `examples/`:
 
-- `WeeklyReviews.tsx` — multi-colour gradient with axis labels
+- `WeeklyChart.tsx` — multi-colour gradient with axis labels
 - `DenseEqualizer.tsx` — many narrow bars, warm palette, random animation
 - `RoundedGradient.tsx` — rounded pillars, blue → purple → pink
 

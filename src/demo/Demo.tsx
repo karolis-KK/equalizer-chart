@@ -1,7 +1,7 @@
 import { useState, type ReactElement } from "react";
 import { EqualizerChart } from "../index";
 import type { EqualizerDatum } from "../index";
-import { WeeklyChart } from "../../examples/WeeklyReviews";
+import { WeeklyChart } from "../../examples/WeeklyChart";
 import { DenseEqualizer } from "../../examples/DenseEqualizer";
 import { RoundedGradient } from "../../examples/RoundedGradient";
 

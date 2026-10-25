@@ -152,6 +152,9 @@ export function EqualizerChart(props: EqualizerChartProps): ReactElement {
     segmentLineColor,
     segmentLineOpacity = 1,
     showTooltips = false,
+    showValues = false,
+    valueFontSize = 12,
+    valueColor,
     style,
     className,
     ariaLabel = 'equalizer chart',
@@ -180,8 +183,10 @@ export function EqualizerChart(props: EqualizerChartProps): ReactElement {
     // Column labels sit directly under the bars; a bottom x-axis label goes
     // below them so the two rows never overlap.
     if (columnRow > 0) space.bottom += columnRow;
+    // Value labels sit just above the tallest bar.
+    if (showValues) space.top = Math.max(space.top, valueFontSize + 6);
     return space;
-  }, [showXAxis, showYAxis, xAxisLabel, yAxisLabel, xAxisPosition, yAxisPosition, axisFontSize, columnRow]);
+  }, [showXAxis, showYAxis, xAxisLabel, yAxisLabel, xAxisPosition, yAxisPosition, axisFontSize, columnRow, showValues, valueFontSize]);
 
   const xAxisLabelY =
     xAxisPosition === 'bottom'
@@ -247,6 +252,7 @@ export function EqualizerChart(props: EqualizerChartProps): ReactElement {
   const enabled = animated && animation !== 'none' && animationAmplitude > 0;
   const barRefs = useRef<Array<SVGRectElement | null>>([]);
   const clipRefs = useRef<Array<SVGRectElement | null>>([]);
+  const valueRefs = useRef<Array<SVGTextElement | null>>([]);
 
   useEffect(() => {
     const applyHeights = (heights: number[]) => {
@@ -265,6 +271,9 @@ export function EqualizerChart(props: EqualizerChartProps): ReactElement {
           clipEl.setAttribute('y', String(y));
           clipEl.setAttribute('height', String(h));
         }
+        // Keep value labels riding on top of their bar.
+        const valueEl = valueRefs.current[i];
+        if (valueEl) valueEl.setAttribute('y', String(y - 4));
       }
     };
 
@@ -497,6 +506,27 @@ export function EqualizerChart(props: EqualizerChartProps): ReactElement {
           ) : null}
         </rect>
       ))}
+
+      {showValues
+        ? bars.map((bar, index) => (
+            <text
+              key={`value-${index}`}
+              ref={(el) => {
+                valueRefs.current[index] = el;
+              }}
+              x={bar.x + bar.width / 2}
+              y={baselineY - bar.baseHeight - 4}
+              fill={valueColor ?? axisColor}
+              fontSize={valueFontSize}
+              fontFamily="inherit"
+              textAnchor="middle"
+              dominantBaseline="auto"
+              pointerEvents="none"
+            >
+              {data[index]?.value}
+            </text>
+          ))
+        : null}
 
       {showSegments && segmentLineWidth > 0 && segmentSize > 0 ? (
         <rect

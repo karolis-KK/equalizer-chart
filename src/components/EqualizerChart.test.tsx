@@ -304,6 +304,54 @@ describe('<EqualizerChart />', () => {
     expect(y('center')).toBeGreaterThan(y('end'));
   });
 
+  it('prints each value above its bar when showValues is enabled', () => {
+    const on = render(<EqualizerChart data={data} showValues />);
+    const values = Array.from(on.container.querySelectorAll('text')).map(
+      (t) => t.textContent,
+    );
+    expect(values).toEqual(['10', '30', '20']);
+    on.unmount();
+
+    const off = render(<EqualizerChart data={data} />);
+    expect(off.container.querySelectorAll('text')).toHaveLength(0);
+    off.unmount();
+  });
+
+  it('moves value labels with their bars during animation', () => {
+    const callbacks: FrameRequestCallback[] = [];
+    const rafSpy = vi
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((cb: FrameRequestCallback) => {
+        callbacks.push(cb);
+        return callbacks.length;
+      });
+    const cancelSpy = vi
+      .spyOn(window, 'cancelAnimationFrame')
+      .mockImplementation(() => {});
+    let now = 0;
+    const nowSpy = vi.spyOn(performance, 'now').mockImplementation(() => now);
+
+    const { container } = render(
+      <EqualizerChart data={data} showValues animationDuration={1000} />,
+    );
+
+    now = 450;
+    callbacks.shift()?.(now);
+
+    const barY = Number(
+      container.querySelector('rect[rx]')?.getAttribute('y'),
+    );
+    const labelY = Number(
+      container.querySelector('text[pointer-events="none"]')?.getAttribute('y'),
+    );
+    // Label should sit 4px above the bar's top edge.
+    expect(labelY).toBeCloseTo(barY - 4, 5);
+
+    rafSpy.mockRestore();
+    cancelSpy.mockRestore();
+    nowSpy.mockRestore();
+  });
+
   it('generates unique gradient ids for multiple instances', () => {
     const { container } = render(
       <div>

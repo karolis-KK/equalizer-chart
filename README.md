@@ -163,6 +163,9 @@ interface EqualizerDatum {
 | `segmentLineColor` | `string` | chart background |
 | `segmentLineOpacity` | `number` | `1` |
 | `showTooltips` | `boolean` | `false` |
+| `showValues` | `boolean` | `false` |
+| `valueFontSize` | `number` | `12` |
+| `valueColor` | `string` | `axisColor` |
 | `className` / `style` | — | — |
 | `ariaLabel` | `string` | `'equalizer chart'` |
 
@@ -250,6 +253,38 @@ the bars and the axis label moves below them — no overlap. Bars without a
 Rotated (left/right) labels read bottom-to-top, so `'start'` is the bottom of
 the axis and `'end'` is the top. Labels are anchored to their own edge, so long
 text never spills outside the chart.
+
+---
+
+## Showing values
+
+There are two independent ways to surface each column's value:
+
+```tsx
+// 1. Visible number above every bar
+<EqualizerChart data={data} showValues />
+
+// 2. Native tooltip on hover (browser-rendered)
+<EqualizerChart data={data} showTooltips />
+```
+
+They can be combined. Value labels track their bar during the on-load
+animation, and the chart reserves top space so the tallest bar's label is never
+clipped.
+
+Style them with `valueFontSize` and `valueColor` (defaults to `axisColor`):
+
+```tsx
+<EqualizerChart
+  data={data}
+  showValues
+  valueFontSize={11}
+  valueColor="#e5e7eb"
+/>
+```
+
+With many bars the numbers crowd quickly — prefer `showTooltips` for dense
+data and `showValues` for a handful of columns.
 
 ---
 

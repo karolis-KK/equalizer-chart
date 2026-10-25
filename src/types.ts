@@ -192,6 +192,15 @@ export interface EqualizerChartProps {
   /** When `true`, each bar renders a `<title>` tooltip with its value. Default: `false`. */
   showTooltips?: boolean;
 
+  /** When `true`, each bar's numeric value is printed above it. Default: `false`. */
+  showValues?: boolean;
+
+  /** Font size (in px) for the value labels. Default: `12`. */
+  valueFontSize?: number;
+
+  /** Color of the value labels. Defaults to `axisColor`. */
+  valueColor?: string;
+
   /** Extra CSS properties applied to the chart container. */
   style?: CSSProperties;
 

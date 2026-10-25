@@ -26,6 +26,7 @@ export function Demo(): ReactElement {
   const [xAlign, setXAlign] = useState<"start" | "center" | "end">("center");
   const [yAlign, setYAlign] = useState<"start" | "center" | "end">("center");
   const [showColumnLabels, setShowColumnLabels] = useState(false);
+  const [showValues, setShowValues] = useState(false);
   const [replayKey, setReplayKey] = useState(0);
 
   return (
@@ -110,6 +111,7 @@ export function Demo(): ReactElement {
             xAxisAlign={xAlign}
             yAxisAlign={yAlign}
             showColumnLabels={showColumnLabels}
+            showValues={showValues}
             axisColor="#9ca3af"
           />
           <div className="controls">
@@ -216,6 +218,14 @@ export function Demo(): ReactElement {
                 type="checkbox"
                 checked={showColumnLabels}
                 onChange={(e) => setShowColumnLabels(e.target.checked)}
+              />
+            </label>
+            <label>
+              Values
+              <input
+                type="checkbox"
+                checked={showValues}
+                onChange={(e) => setShowValues(e.target.checked)}
               />
             </label>
             <label>

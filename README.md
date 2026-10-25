@@ -13,11 +13,8 @@ A lightweight React bar chart styled like a music equalizer.
 
 ## About
 
-`equalizer-chart` renders data as vertical pillars filled with a colour
-gradient and overlaid with fine horizontal lines, giving that stacked-block
-equalizer look. When the page loads, the bars play a single ~1 second pulse
-(`wave` or `random`) and then stop on their true values, so the chart is
-readable immediately without distracting motion.
+`equalizer-chart` renders data as vertical columns colored with a gradient and overlaid with horizontal lines, so the chart looks like a real equalizer/waveform bar. When the page loads, the bars play a single ~1 second pulse animation
+(`wave` or `random`) and then stop on their true values.
 
 Everything is inline SVG.
 
@@ -52,19 +49,18 @@ export function App() {
 }
 ```
 
-That's it. You get a gradient equalizer chart with the default green to pink
-palette and a one-time on-load animation.
+That's it.
 
 ### Next.js
 
-The component animates on the client, so import it inside a client component:
+The component animates on the client, so make sure to import it inside a client component:
 
 ```tsx
 'use client';
 import { EqualizerChart } from 'equalizer-chart';
 ```
 
-Server-side rendering works out of the box; the animation starts after mount.
+Server-side rendering works out of the box. The animation starts after mount.
 
 ---
 
@@ -171,7 +167,7 @@ interface EqualizerDatum {
 
 ### Gradients
 
-Pass an array of colours (evenly spaced, bottom → top):
+Pass an array of colours (evenly spaced, bottom to top):
 
 ```tsx
 gradient={['#22c55e', '#facc15', '#f97316', '#ef4444', '#ec4899']}
@@ -195,7 +191,7 @@ With `fixed: false`, each bar gets its own gradient from base to tip.
 
 ## Column labels
 
-Every datum has an optional `label`. Turn on `showColumnLabels` to print it
+Every datum has an optional `label`. Turn on `showColumnLabels` to display it
 under its bar:
 
 ```tsx
@@ -220,7 +216,7 @@ Style them independently of the axis:
 ```
 
 If a bottom x-axis label is also shown, the column labels sit directly under
-the bars and the axis label moves below them — no overlap. Bars without a
+the bars and the axis label moves below them, meaning no overlap. Bars without a
 `label` simply render no text.
 
 ---
@@ -269,7 +265,7 @@ There are two independent ways to surface each column's value:
 ```
 
 They can be combined. Value labels track their bar during the on-load
-animation, and the chart reserves top space so the tallest bar's label is never
+animation and the chart reserves top space so the tallest bar's label is never
 clipped.
 
 Style them with `valueFontSize` and `valueColor` (defaults to `axisColor`):
@@ -283,7 +279,7 @@ Style them with `valueFontSize` and `valueColor` (defaults to `axisColor`):
 />
 ```
 
-With many bars the numbers crowd quickly — prefer `showTooltips` for dense
+Prefer `showTooltips` for dense
 data and `showValues` for a handful of columns.
 
 ---

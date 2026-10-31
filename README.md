@@ -264,7 +264,7 @@ There are two independent ways to surface each column's value:
 <EqualizerChart data={data} showTooltips />
 ```
 
-They can be combined. Value labels track their bar during the on-load
+They can be combined. Value labels track their bar during the on load
 animation and the chart reserves top space so the tallest bar's label is never
 clipped.
 
@@ -288,7 +288,7 @@ data and `showValues` for a handful of columns.
 
 ```bash
 npm install
-npm run dev        # playground at http://localhost:5173
+npm run dev        # test at http://localhost:5173
 npm run test
 npm run typecheck
 npm run build      # ESM + CJS + .d.ts into dist/

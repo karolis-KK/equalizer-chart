@@ -266,7 +266,7 @@ There are two independent ways to surface each column's value:
 
 They can be combined. Value labels track their bar during the on load
 animation and the chart reserves top space so the tallest bar's label is never
-clipped.
+clipped
 
 Style them with `valueFontSize` and `valueColor` (defaults to `axisColor`):
 
@@ -279,7 +279,7 @@ Style them with `valueFontSize` and `valueColor` (defaults to `axisColor`):
 />
 ```
 
-Prefer `showTooltips` for dense
+`showTooltips` is prefered for dense
 data and `showValues` for a handful of columns.
 
 ---
